@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<link rel="stylesheet" href="styles.css" />-->
+    <link rel="stylesheet" href="/VL/css/gatsby.css">
+    <title>Book Details</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="book-title">The Innocent</h1>
+      <div class="book-info">
+        <img src="/VL/img/Audio_Covers/fiction_book3.jpg" alt="The Great Gatsby" class="book-img" />
+        <div class="info">
+          <p><strong>Author:</strong> David Baldacci</p>
+          <p><strong>Release Date:</strong> April 17, 2012</p>
+          <p><strong>Narrator:</strong></p>
+          <p>
+            <strong>Description:</strong>Fleeing the scene, Robie crosses paths with a fourteen-year-old runaway from a foster home. But she isn't an ordinary runaway—her parents were murdered, and her own life is in danger. Against his professional training, Robie rescues her and finds he can't walk away. He needs to help her find her family and discover the truth about what happened to them. But as they dig deeper, they uncover a conspiracy that reaches into the highest levels of government and law enforcement.
+
+          </p>
+        </div>
+      </div>
+
+      <div class="audio-controls">
+        <audio id="audio-player" controls>
+          <source src="theInnocent.m4a" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="buttons">
+          <button id="play-btn">Play</button>
+          <button id="pause-btn">Pause</button>
+          <button id="download-btn">
+            <a href="greatgatsby.mp3" download>Download</a>
+          </button>
+          <button id="share-btn">Share</button>
+        </div>
+        <div class="volume-control">
+          <label for="volume">Volume:</label>
+          <input
+            type="range"
+            id="volume"
+            min="0"
+            max="1"
+            step="0.1"
+            value="1"
+          />
+        </div>
+      </div>
+
+      <a href="fiction.php" class="back-button">Back to Genres</a>
+    </div>
+
+    <script>
+      const audioPlayer = document.getElementById("audio-player");
+      const playButton = document.getElementById("play-btn");
+      const pauseButton = document.getElementById("pause-btn");
+      const volumeControl = document.getElementById("volume");
+
+      playButton.addEventListener("click", () => {
+        audioPlayer.play();
+      });
+
+      pauseButton.addEventListener("click", () => {
+        audioPlayer.pause();
+      });
+
+      volumeControl.addEventListener("input", (event) => {
+        audioPlayer.volume = event.target.value;
+      });
+
+      document.getElementById("share-btn").addEventListener("click", () => {
+        const shareData = {
+          title: "Check out this book!",
+          text: "I just listened to The Great Gatsby. You should try it!",
+          url: window.location.href,
+        };
+        navigator
+          .share(shareData)
+          .catch((err) => console.error("Error sharing:", err));
+      });
+    </script>
+  </body>
+</html>
